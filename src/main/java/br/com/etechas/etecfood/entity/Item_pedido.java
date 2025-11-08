@@ -19,13 +19,13 @@ public class Item_pedido {
     private Integer quantidade;
 
     @Column(name = "OBSERVACAO")
-    private String obersavacao;
-
-    @OneToMany
-    @Column(name = "PEDIDO_ID")
-    private Pedido pedidoId;
+    private String observacao;
 
     @ManyToOne
-    @Column(name = "id_itemcardapio")
-    private ItemCardapio itemCardapio; // vai dar erro pq nn existe
+    @JoinColumn(name = "PEDIDO_ID")
+    private Pedido pedido;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_ITEMCARDAPIO")
+    private ItemCardapio itemCardapio;
 }

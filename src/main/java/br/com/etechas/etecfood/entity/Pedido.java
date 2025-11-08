@@ -24,6 +24,7 @@ public class Pedido {
     @Column(name = "STATUS")
     private String status;
 
-    @Column(name = "RESTAURANTE_ID")
-    private Long restaurante;
+    @ManyToOne
+    @JoinColumn(name = "RESTAURANTE_ID")
+    private Restaurante restaurante;
 }

@@ -20,7 +20,7 @@ import br.com.etechas.etecfood.Enums.TipoVeiculoEnum;
 
 public class Veiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+    @Id2
     @Column(name = "ID_VEIC")
     private Long id;
 
