@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/itens-pedido")
@@ -21,8 +21,34 @@ public class ItemPedidoController {
     }
 
     @GetMapping("/{id}")
-    public Item_pedido buscarPorId(@PathVariable Long id) {
-        Optional<Item_pedido>item=itemPedidoRepository.findById(id);
-        return item.orElse(null);
+    public Item_pedido buscarPorId(@PathVariable Long id)
+    {
+        var item = itemPedidoRepository.findById(id);
+        if(item.isPresent())
+        {
+            return item.get();
+        }
+        return null;
     }
+
+
+    @PostMapping
+    public void cadastrar(@RequestBody Item_pedido itemPedido)
+    {
+        itemPedidoRepository.save(itemPedido);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id)
+    {
+        var item = itemPedidoRepository.findById(id);
+        if(item.isPresent())
+        {
+            itemPedidoRepository.delete(item.get());
+        }
+    }
+
+
+
 }
