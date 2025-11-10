@@ -22,6 +22,6 @@ public class Avaliacao {
     private String comentario;
 
     @ManyToOne
-    @Column(name = "PEDIDO_ID")
-    private Pedido pedidoId;
+    @JoinColumn(name = "PEDIDO_ID") 
+    private Pedido pedido;
 }
