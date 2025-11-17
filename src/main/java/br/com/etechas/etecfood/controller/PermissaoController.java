@@ -37,4 +37,9 @@ public class PermissaoController {
             return permissao.get();
         return null;
     }
+
+    @PostMapping
+    public void cadastrar(@RequestBody Permissao permissao){
+        permissaoRepository.save(permissao);
+    }
 }
