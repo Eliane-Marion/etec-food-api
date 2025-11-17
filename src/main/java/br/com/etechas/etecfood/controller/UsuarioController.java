@@ -31,13 +31,13 @@ public class UsuarioController {
 
     @PostMapping
     public void cadastrar(@RequestBody Usuario usuario){
-        UsuarioRepository.save(usuario);
+        usuarioRepository.save(usuario);
     }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id){
-        var usuario = UsuarioRepository.findById(id);
+        var usuario = usuarioRepository.findById(id);
         if(usuario.isPresent())
-            UsuarioRepository.delete(usuario.get());
+            usuarioRepository.delete(usuario.get());
     }
 }
