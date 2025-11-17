@@ -42,4 +42,12 @@ public class PermissaoController {
     public void cadastrar(@RequestBody Permissao permissao){
         permissaoRepository.save(permissao);
     }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id){
+        var permissao = permissaoRepository.findById(id);
+        if(permissao.isPresent())
+            permissaoRepository.delete(permissao.get());
+    }
 }
+
