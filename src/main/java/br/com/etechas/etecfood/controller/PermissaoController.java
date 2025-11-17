@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/permissao")
 // Classe responsável por gerenciar as requisições relacionadas aos usuários.
 public class PermissaoController {
 
