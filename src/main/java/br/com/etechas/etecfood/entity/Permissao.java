@@ -15,7 +15,12 @@ public class Permissao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_PERMISSAO")
     private Long id;
-
+// Nome da autoridade
     @Column(name = "TX_AUTHORITY")
     private String authority;
+
+// Método simples para exibir a permissão
+    public String exibir() {
+        return "Permissão: " + authority;
+    }
 }
