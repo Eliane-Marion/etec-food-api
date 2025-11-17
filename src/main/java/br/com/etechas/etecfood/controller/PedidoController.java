@@ -18,4 +18,13 @@ public class PedidoController {
     public List<Pedido> listar() {
         return pedidoRepository.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Pedido buscarPorId(@PathVariable Long id) {
+        var pedido = pedidoRepository.findById(id);
+        if (pedido.isPresent()) {
+            return pedido.get();
+        }
+        return null;
+    }
 }
