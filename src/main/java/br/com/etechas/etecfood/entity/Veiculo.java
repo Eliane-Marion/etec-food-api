@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 
 @Entity
-@Table(name = "VEICULO")
+@Table(name = "Veiculo")
 
 public class Veiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +27,9 @@ public class Veiculo {
     private Long id;
 
     @Column(name = "TX_PLACA_VEIC")
-    private Character placa;
+    private String placa;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "TIPO_VEIC")
     private TipoVeiculoEnum tipo;
 
