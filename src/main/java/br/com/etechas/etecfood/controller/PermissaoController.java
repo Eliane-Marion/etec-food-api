@@ -46,11 +46,11 @@ public class PermissaoController {
             permissaoRepository.delete(permissao.get());
     }
 
-    @PatchMapping("/{id}")
-    public ResponseEntity<Permissao> atualizar(@PathVariable Integer id){
+    @PutMapping("/{id}")
+    public ResponseEntity<Permissao> atualizar(@PathVariable Long id){
         var permissao = permissaoRepository.findById(id);
         if(permissao.isPresent()) {
-            return ResponseEntity.status(HttpStatus.CREATED).body(Permissao);
+            return ResponseEntity.status(HttpStatus.OK).body(permissao.get());
         }
         return ResponseEntity.notFound().build();
     }
