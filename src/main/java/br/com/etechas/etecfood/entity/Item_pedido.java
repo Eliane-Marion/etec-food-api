@@ -1,3 +1,13 @@
+/*
+ * Nomes:
+ * Victor de Melo - Github: Viccitor
+ * Miguel Angel - Github: miguel320007
+ * Anderson Filipim - Github: AndersonFilipimdeSousaFilho
+ * Gabriel de Albuquerque - Github: GabrieldeAlbuquerqueMagalhaes
+ * Jonatas Calebe - Github: calebe-007
+ * Cauã Santos - Github: CauaSantos41
+ * */
+
 package br.com.etechas.etecfood.entity;
 
 import jakarta.persistence.*;
@@ -18,14 +28,15 @@ public class Item_pedido {
     @Column(name = "QUANTIDADE")
     private Integer quantidade;
 
-    @Column(name = "OBSERVACAO")
-    private String obersavacao;
-
-    @OneToMany
-    @Column(name = "PEDIDO_ID")
-    private Pedido pedidoId;
+    
+    @Column(name = "OBSERVACAO" )
+    private String observacao;
 
     @ManyToOne
-    @Column(name = "id_itemcardapio")
-    private ItemCardapio itemCardapio; // vai dar erro pq nn existe
+    @JoinColumn(name = "PEDIDO_ID")
+    private Pedido pedido;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_ITEMCARDAPIO")
+    private ItemCardapio itemCardapio;
 }

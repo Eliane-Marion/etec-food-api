@@ -1,3 +1,13 @@
+/*
+ * Nomes:
+ * Victor de Melo - Github: Viccitor
+ * Miguel Angel - Github: miguel320007
+ * Anderson Filipim - Github: AndersonFilipimdeSousaFilho
+ * Gabriel de Albuquerque - Github: gbzinn966
+ * Jonatas Calebe - Github: calebe-007
+ * Cauã Santos - Github: CauaSantos41
+ * */
+
 package br.com.etechas.etecfood.entity;
 
 import jakarta.persistence.*;
@@ -24,6 +34,7 @@ public class Pedido {
     @Column(name = "STATUS")
     private String status;
 
-    @Column(name = "RESTAURANTE_ID")
-    private Long restaurante;
+    @ManyToOne
+    @JoinColumn(name = "RESTAURANTE_ID")
+    private Restaurante restaurante;
 }
