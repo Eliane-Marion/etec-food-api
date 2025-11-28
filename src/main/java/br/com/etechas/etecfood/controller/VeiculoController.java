@@ -1,6 +1,6 @@
-package br.com.etechas.etecfood.controllers;
+package br.com.etechas.etecfood.controller;
 
-import br.com.etechas.etecfood.entitys.Veiculo;
+import br.com.etechas.etecfood.entity.Veiculo;
 import br.com.etechas.etecfood.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

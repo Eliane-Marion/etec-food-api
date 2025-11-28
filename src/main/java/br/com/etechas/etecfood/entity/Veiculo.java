@@ -6,7 +6,7 @@
 
 package br.com.etechas.etecfood.entity;
 
-import br.com.etechas.etecfood.entity.Entregador;
+
 import br.com.etechas.etecfood.enums.TipoVeiculoEnum;
 import jakarta.persistence.*;
 import lombok.Getter;

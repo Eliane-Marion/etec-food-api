@@ -1,4 +1,4 @@
-package br.com.etechas.etecfood.Enums;
+package br.com.etechas.etecfood.enums;
 
 public enum TipoVeiculoEnum {
     MOTO,
