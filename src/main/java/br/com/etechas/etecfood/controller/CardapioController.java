@@ -2,11 +2,14 @@ package br.com.etechas.etecfood.controller;
 
 import br.com.etechas.etecfood.entity.Cardapio;
 import br.com.etechas.etecfood.repository.CardapioRepository;
-import org.hibernate.mapping.List;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.util.List;
 
 import static org.springframework.data.jpa.domain.JpaSort.path;
 
@@ -18,33 +21,31 @@ public class CardapioController {
 
     @GetMapping
     public List<Cardapio> select(){
-        return cardapioRepository.fildAll();
+        return cardapioRepository.findAll();
     }
 
     @GetMapping("/(id)")
-    public ResponseEntity<Cardapio> selectById(@PathVariable long id)  {
-        Cardapio obj = this.cardapioRepository.findById(id);
+    public ResponseEntity<Cardapio> selectById(@PathVariable Long id)  {
+        Cardapio obj = this.cardapioRepository.findById(id).get();
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping
-    public  ResponseEntity<Void> criar(@RequestBody Cardapio obj){
-        this.cardapioRepository.create(obj);
-        Uri uri = ServletUriComponentsBuilder.fromCurrentRequestUri();
-        .path("(id)").buildAndExpand(obj.getId).toUi();
-                return  ResponseEntity.created(uri).build();
+    public  ResponseEntity<Cardapio> criar(@RequestBody Cardapio obj){
+        var novoCardapio = this.cardapioRepository.save(obj);
+        return  ResponseEntity.status(HttpStatus.CREATED).body(novoCardapio);
     }
 
     @PutMapping("/(id)")
-    public  ResponseEntity<Void> atualizar(@RequestBody Cardapio obj, @PathVariable long id)(
-            obj.setId(id);
-            this.CardapioRepository.update(obj);
-            return ResponseEntity.noContent().build();
-            )
+    public  ResponseEntity<Void> atualizar(@RequestBody Cardapio obj, @PathVariable long id) {
+
+        this.cardapioRepository.save(obj);
+        return ResponseEntity.noContent().build();
+    }
 
     @DeleteMapping("/(id)")
     public ResponseEntity<Void> deletar(@PathVariable long id)  {
-        this.cardapioRepository.delete(id);
-        return ResponseEntity.noContent().build();
+        this.cardapioRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }
